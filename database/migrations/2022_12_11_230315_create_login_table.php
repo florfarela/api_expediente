@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('login', function (Blueprint $table) {
             $table->id();
-            $table->integer('dui');
+            $table->string('patients_dui');
+            $table->foreign('patients_dui')
+                    ->references('dui')
+                    ->on('patients')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
             $table->string('password');
             $table->timestamps();
         });

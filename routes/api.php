@@ -27,3 +27,7 @@ Route::post('/patientStore',[PatientController::class,'store']); //Crear un nuev
 Route::get('/patientId/{id}',[PatientController::class,'show']);//mostrar por id
 Route::put('/patientUpDate/{id}',[PatientController::class,'update']); // Actualizamos el paciente
 Route::delete('/patientDelete/{id}',[PatientController::class,'destroy']); //Eliminamos el paciente
+
+//Login
+Route::get('/Login', [LoginController::class, 'index']);
+Route::post('/LoginStore', [LoginController::class, 'store']);

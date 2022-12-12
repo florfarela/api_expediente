@@ -14,18 +14,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patiens = Patient::all();
-        return $patiens;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $patienShow = Patient::all();
+        return $patienShow;
     }
 
     /**
@@ -36,20 +26,20 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $patient = new Patient();
-        $patient->dui = $request->dui;
-        $patient->name = $request->name;
-        $patient->age = $request->age;
-        $patient->adress = $request->adress;
-        $patient->phone = $request->phone;
-        $patient->diagnosis = $request->diagnosis;
-        $patient->admitted = $request->admitted;
-        $patient->area = $request->area;
-        $patient->observations = $request->observations;
-        $patient->severity = $request->severity;
-        $patient->doctor = $request->doctor;
+        $patientStore = new Patient();
+        $patientStore->dui = $request->dui;
+        $patientStore->name = $request->name;
+        $patientStore->age = $request->age;
+        $patientStore->adress = $request->adress;
+        $patientStore->phone = $request->phone;
+        $patientStore->diagnosis = $request->diagnosis;
+        $patientStore->admitted = $request->admitted;
+        $patientStore->area = $request->area;
+        $patientStore->observations = $request->observations;
+        $patientStore->severity = $request->severity;
+        $patientStore->doctor = $request->doctor;
 
-        $patient->save();
+        $patientStore->save();
 
     }
 
@@ -61,7 +51,8 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        //
+        $patientId = Patient::find($id);
+        return $patientId;
     }
 
     /**
@@ -72,7 +63,7 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -82,24 +73,23 @@ class PatientController extends Controller
      * @param  int  $dui    
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $dui)
+    public function update(Request $request,$id)
     {
-        $patient = Patient::findOrFail($request->dui);
-        $patient->dui = $request->dui;
-        $patient->name = $request->name;
-        $patient->age = $request->age;
-        $patient->adress = $request->adress;
-        $patient->phone = $request->phone;
-        $patient->diagnosis = $request->diagnosis;
-        $patient->admitted = $request->admitted;
-        $patient->area = $request->area;
-        $patient->observations = $request->observations;
-        $patient->severity = $request->severity;
-        $patient->doctor = $request->doctor;
+        $patientUpDate = Patient::findOrFail($id);
+        $patientUpDate->dui = $request->dui;
+        $patientUpDate->name = $request->name;
+        $patientUpDate->age = $request->age;
+        $patientUpDate->adress = $request->adress;
+        $patientUpDate->phone = $request->phone;
+        $patientUpDate->diagnosis = $request->diagnosis;
+        $patientUpDate->admitted = $request->admitted;
+        $patientUpDate->area = $request->area;
+        $patientUpDate->observations = $request->observations;
+        $patientUpDate->severity = $request->severity;
+        $patientUpDate->doctor = $request->doctor;
 
-        $patient->save();
-
-        return $patient;
+        $patientUpDate->save();
+         return $patientUpDate;
     }
 
     /**
@@ -108,9 +98,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($dui)
+    public function destroy($id)
     {
-        $patient = Patient::destroy($dui);
-        return $patient;
+        $patientDelete = Patient::destroy($id);
+        return $patientDelete;
     }
 }

@@ -20,7 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Rutas de Laravel 9
-Route::get('/Patient', [PatientController::class,'index']); //Mostramos todos los datos
-Route::post('/Patient', [PatientController::class,'store']); //Crear un nuevo paciente
-Route::put('/Patient/{dui}', [PatientController::class,'update']); // Actualizamos el paciente
-Route::delete('/Patient/{dui}', [PatientController::class,'destroy']); //Eliminamos el paciente
+Route::get('/patientShow',[PatientController::class,'index']); //Mostramos todos los datos
+Route::post('/patientStore',[PatientController::class,'store']); //Crear un nuevo paciente
+Route::get('/patientId/{id}',[PatientController::class,'show']);//mostrar por id
+Route::put('/patientUpDate/{id}',[PatientController::class,'update']); // Actualizamos el paciente
+Route::delete('/patientDelete/{id}',[PatientController::class,'destroy']); //Eliminamos el paciente

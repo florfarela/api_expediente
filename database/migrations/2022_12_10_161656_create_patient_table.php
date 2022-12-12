@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {   //Pasamos toda la estuctura de la tabla y campos de la tabla "patient"
         Schema::create('patients', function (Blueprint $table) {
-            $table->integer('dui')->primary(); //Convertimos dui como llave primaria
+            $table->id();
+            $table->integer('dui');
             $table->string('name');
             $table->integer('age');
             $table->string('adress');

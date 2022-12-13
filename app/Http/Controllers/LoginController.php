@@ -38,7 +38,7 @@ class LoginController extends Controller
     {
         $loginStore = new Login();
         $loginStore->id = $request->id;
-        $loginStore->dui = $request->dui;
+        $loginStore->patients_dui = $request->patients_dui;
         $loginStore->password = $request->password;
 
         $loginStore->save();

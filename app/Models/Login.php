@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Login extends Model
 {
     use HasFactory;
-    protected $fillable = ['dui','password'];
+    protected $fillable = ['patients_dui','password'];
 }

@@ -38,9 +38,9 @@ class RoleController extends Controller
     //Creating a new role
     public function store(Request $request)
     {
-        $roleStore=new Role();
-        $roleStore->roleName=$roleStore->roleName;
-        $roleStore->roleDescription=$roleStore->roleDescription;
+        $roleStore = new Role();
+        $roleStore->roleName = $request->roleName;
+        $roleStore->roleDescription = $request->roleDescription;
         $roleStore->save();
     }
 
@@ -52,7 +52,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $roleShow= Role::find($id);
+        $roleShow = Role::find($id);
         return $roleShow;
     }
 
@@ -77,9 +77,9 @@ class RoleController extends Controller
     //Updating a role
     public function update(Request $request, $id)
     {
-        $roleUpdate=Role::findOrFail($id);
-        $roleUpdate->roleName=$roleUpdate->roleName;
-        $roleUpdate->roleDescription=$roleUpdate->roleDescription;
+        $roleUpdate = Role::findOrFail($id);
+        $roleUpdate->roleName = $request->roleName;
+        $roleUpdate->roleDescription = $request->roleDescription;
         $roleUpdate->save();
         return $roleUpdate;
     }
@@ -93,7 +93,7 @@ class RoleController extends Controller
     //Deleting a role
     public function destroy($id)
     {
-        $roleDestroy=Role::destroy($id);
+        $roleDestroy = Role::destroy($id);
         return $roleDestroy;
     }
 }

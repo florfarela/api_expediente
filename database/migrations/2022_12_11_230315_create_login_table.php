@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('login', function (Blueprint $table) {
+        Schema::create('logins', function (Blueprint $table) {
             $table->id();
             $table->string('patients_dui');
-            $table->foreign('patients_dui')
-                    ->references('dui')
-                    ->on('patients')
-                    ->onDelete('cascade')
-                    ->onUpdate('cascade');
             $table->string('password');
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('role', function (Blueprint $table) {//Role model table structure
+        Schema::create('roles', function (Blueprint $table) {//Role model table structure
             $table->id(); 
             $table->string('roleName');
             $table->string('roleDescription');

@@ -25,7 +25,7 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //Funcion que muestra crea un rol
+    public function store(Request $request) //Funcion que crea un rol
     {
         $role = new Role;
         $role->name = $request->name;

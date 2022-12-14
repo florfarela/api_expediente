@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','description'];
+    protected $fillable = ['name','description']; //variable que nos ayudara a construir y visualizar los campos donde los datos se ingresaran.
 }

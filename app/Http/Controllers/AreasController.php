@@ -12,25 +12,25 @@ class AreasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //Funcion que mostrara una lista de areas.
     {
         $areas = Area::all();
-        return response()->json($areas);
+        return response()->json($areas); 
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) //Funcion que creara un area nueva.
     {
         $area = new Area;
         $area->name = $request->name;
         $area->description = $request->description;
         $area->save();
-        return response()->json($area);
+        return response()->json($area); 
     }
 
     /**
@@ -39,7 +39,7 @@ class AreasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //Función que muestra un area en espefico basandose en su id
     {
         $area = Area::findOrFail($id);
         return response()->json($area);
@@ -52,7 +52,7 @@ class AreasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)//Función que actualiza datos de un area basandose en su id
     {
         $area = Area::findOrFail($id);
         $area->name = $request->name;
@@ -67,7 +67,7 @@ class AreasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id)//Función que elimina un area basandose en su id
     {
         $area = Area::findOrFail($id);
         $area->delete();

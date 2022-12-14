@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {//funcion que preparara los camos existentes donde se ingresaran los datos
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();

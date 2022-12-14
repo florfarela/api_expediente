@@ -13,18 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('receptionists', function (Blueprint $table) {
+        Schema::create('receptionists', function (Blueprint $table) { //funcion que preparara los camos existentes donde se ingresaran los datos
             $table->id();
             $table->integer('dui');
             $table->string('name');
             $table->integer('age')->nullable();
             $table->string('adress')->nullable();
-            $table->foreignId('idArea')
-                  ->constrained('areas')
+            $table->foreignId('idArea') //establecemos la llave foranea que nos ayudara a recibir la vinculacion de las demas tablas
+                  ->constrained('areas') //e indicamos de donde proviene la vinculacion
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete();  
-            $table->foreignId('idRoles')
-                  ->constrained('roles')
+            $table->foreignId('idRoles') //establecemos la llave foranea que nos ayudara a recibir la vinculacion de las demas tablas
+                  ->constrained('roles') //e indicamos de donde proviene la vinculacion
                   ->cascadeOnUpdate()
                   ->cascadeOnDelete(); 
             $table->string('password');

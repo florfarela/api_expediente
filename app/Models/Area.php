@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Login extends Model
+class Area extends Model
 {
     use HasFactory;
-    protected $fillable = ['patients_dui','password'];
+    protected $fillable = ['name','description'];
 }

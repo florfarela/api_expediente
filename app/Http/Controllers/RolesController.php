@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class RolesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    //Listing the roles
     public function index()
     {
-        $roleIndex = Role::all();   //creacion del get all
-        return $roleIndex;
+        //
     }
 
     /**
@@ -35,13 +32,9 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //Creating a new role
     public function store(Request $request)
     {
-        $roleStore = new Role();
-        $roleStore->roleName = $request->roleName;
-        $roleStore->roleDescription = $request->roleDescription;
-        $roleStore->save();
+        //
     }
 
     /**
@@ -52,8 +45,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $roleShow = Role::find($id);
-        return $roleShow;
+        //
     }
 
     /**
@@ -74,14 +66,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    //Updating a role
     public function update(Request $request, $id)
     {
-        $roleUpdate = Role::findOrFail($id);
-        $roleUpdate->roleName = $request->roleName;
-        $roleUpdate->roleDescription = $request->roleDescription;
-        $roleUpdate->save();
-        return $roleUpdate;
+        //
     }
 
     /**
@@ -90,10 +77,8 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    //Deleting a role
     public function destroy($id)
     {
-        $roleDestroy = Role::destroy($id);
-        return $roleDestroy;
+        //
     }
 }

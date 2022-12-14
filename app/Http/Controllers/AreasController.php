@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Login;
+use App\Models\Area;
 
-class LoginController extends Controller
+class AreasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,34 +14,23 @@ class LoginController extends Controller
      */
     public function index()
     {
-       $logins = Login::all();
-        return $logins;
+        $areas = Area::all();
+        return response()->json($areas);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $loginStore = new Login();
-        $loginStore->id = $request->id;
-        $loginStore->patients_dui = $request->patients_dui;
-        $loginStore->password = $request->password;
-
-        $loginStore->save();
+        $area = new Area;
+        $area->name = $request->name;
+        $area->description = $request->description;
+        $area->save();
+        return response()->json($area);
     }
 
     /**
@@ -52,18 +41,8 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $area = Area::findOrFail($id);
+        return response()->json($area);
     }
 
     /**
@@ -75,7 +54,11 @@ class LoginController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $area = Area::findOrFail($id);
+        $area->name = $request->name;
+        $area->description = $request->description;
+        $area->save();
+        return response()->json($area);
     }
 
     /**
@@ -86,6 +69,8 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $area = Area::findOrFail($id);
+        $area->delete();
+        return response()->noContent();
     }
 }

@@ -13,9 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('logins', function (Blueprint $table) {
+        Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->string('patients_dui');
+            $table->integer('dui');
+            $table->string('name');
+            $table->foreignId('idRoles')
+                  ->constrained('roles')
+                  ->cascadeOnUpdate()
+                  ->cascadeOnDelete();
+            $table->string('specialty')->nullable();
             $table->string('password');
             $table->timestamps();
         });
@@ -28,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('login');
+        Schema::dropIfExists('doctors');
     }
 };

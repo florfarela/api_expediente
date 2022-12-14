@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Doctor;
 
 class DoctorsController extends Controller
 {
@@ -11,19 +12,10 @@ class DoctorsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()//Función que muesta una lista de doctores
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $doctors = Doctor::all();
+        return response()->json($doctors);
     }
 
     /**
@@ -32,9 +24,15 @@ class DoctorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)//Función que crea un nuevo doctor 
     {
-        //
+        $doctor = new Doctor;
+        $doctor->dui = $request->dui;
+        $doctor->name = $request->name;
+        $doctor->password = $request->password;
+        $doctor->idRoll = $request->idRoll;
+        $doctor->specialty = $request->specialty;
+        return response()->json($doctor);
     }
 
     /**
@@ -43,9 +41,10 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)//Función que muestra un doctor en espefico basandose en su id
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+        return response()->json($doctor);
     }
 
     /**
@@ -66,9 +65,16 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)//Función que actualiza datos de un doctor basandose en su id
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+        $doctor->dui = $request->dui;
+        $doctor->name = $request->name;
+        $doctor->password = $request->password;
+        $doctor->idRoll = $request->idRoll;
+        $doctor->specialty = $request->specialty;
+        $doctor->save();
+        return response()->json($doctor);
     }
 
     /**
@@ -77,8 +83,10 @@ class DoctorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id)//Función que elimina un doctor basandose en su id
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+        $doctor->delete();
+        return response()->noContent();
     }
 }

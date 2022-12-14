@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Receptionist;
 
 class ReceptionistController extends Controller
 {
@@ -11,19 +12,10 @@ class ReceptionistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()//Funcion que muestra una lista de recepcionistas
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $receptionists = Receptionist::all();
+        return response()->json($$receptionists);
     }
 
     /**
@@ -32,9 +24,18 @@ class ReceptionistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)//Funcion que crea una recepcionista
     {
-        //
+        $receptionist = new Receptionist;
+        $receptionist->dui = $request->dui;
+        $receptionist->age = $request->age;
+        $receptionist->name = $request->name;
+        $receptionist->direction = $request->direction;
+        $receptionist->idArea = $request->idArea;//FK
+        $receptionist->password = $request->password;
+        $receptionist->idRoll = $request->idRoll;//FK
+        $receptionist->save();
+        return response()->json($receptionist);
     }
 
     /**
@@ -43,9 +44,10 @@ class ReceptionistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)//Funcion que muestra una recepcionista basandose en su id
     {
-        //
+        $receptionist = Receptionist::findOrFail($id);
+        return response()->json($receptionist);
     }
 
     /**
@@ -66,9 +68,18 @@ class ReceptionistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)//Funcion que actualiza datos una recepcionista basandose en su id
     {
-        //
+        $receptionist = Receptionist::findOrFail($id);
+        $receptionist->dui = $request->dui;
+        $receptionist->age = $request->age;
+        $receptionist->name = $request->name;
+        $receptionist->direction = $request->direction;
+        $receptionist->idArea = $request->idArea;
+        $receptionist->password = $request->password;
+        $receptionist->idRoll = $request->idRoll;
+        $receptionist->save();
+        return response()->json($receptionist);
     }
 
     /**
@@ -77,8 +88,10 @@ class ReceptionistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id)//Funcion que elimina una recepcionista basandose en su id
     {
-        //
+        $receptionist = Receptionist::findOrFail($id);
+        $receptionist->delete();
+        return response()->noContent();
     }
 }

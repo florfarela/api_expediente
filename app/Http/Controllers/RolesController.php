@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class RolesController extends Controller
 {
@@ -11,20 +12,12 @@ class RolesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() //Funcion que muestra una lista de Roles
     {
-        //
+        $roles = Role::all();
+        return response()->json($roles);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -32,9 +25,12 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) //Funcion que muestra crea un rol
     {
-        //
+        $role = new Role;
+        $role->name = $request->name;
+        $role->save();
+        return response()->json($role);
     }
 
     /**
@@ -43,21 +39,12 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id)//Funcion que muestra un rol basandose en su id
     {
-        //
+        $role = Role::findOrFail($id);
+        return response()->json($role);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -66,9 +53,12 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id)//Funcion que actualiza un rol basandose en su id
     {
-        //
+        $role = Role::findOrFail($id);
+        $role->name = $request->name;
+        $role->save();
+        return response()->json($role);
     }
 
     /**
@@ -77,8 +67,10 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id)//Funcion que elimina un rol basandose en su id
     {
-        //
+        $role = Role::findOrFail($id);
+        $role->delete();
+        return response()->noContent();
     }
 }

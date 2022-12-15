@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Area extends Model 
 {
     use HasFactory;
-    protected $fillable = ['name','description']; //variable que nos ayudara a construir
-}                                                 //y visualizar los campos donde los datos se ingresaran.
+    protected $fillable = ['name','description']; //variable que nos ayudara a construir y visualizar los campos donde los datos se ingresaran.
+}                                                

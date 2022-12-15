@@ -9,7 +9,7 @@ class Doctor extends Model
 {
     use HasFactory;
     //variable que nos ayudara a construir y visualizar los campos donde los datos se ingresaran.
-    protected $fillable = ['dui','name','idRoles','speciality','password']; 
+    protected $fillable = ['dui','name','idRoles','specialty','password']; 
 
     public function role (){ //funicion que vincula el id del modelo Role con el modelo Doctor
         return $this->belongsTo(Role::class,'id');

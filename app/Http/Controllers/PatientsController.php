@@ -16,8 +16,7 @@ class PatientsController extends Controller
     //Funcion que crea un paciente
     public function store(Request $request)
     {
-        $patient = new Patient;
-        
+        $patient = new Patient; 
         $patient->dui = $request->dui;
         $patient->name = $request->name;
         $patient->age = $request->age;

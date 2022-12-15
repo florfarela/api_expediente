@@ -11,8 +11,8 @@ class DoctorsController extends Controller
     //get...
     public function index()
     {
-        $doctor = Doctor::all();
-        return response()->json($doctor);
+        $doctors = Doctor::all();
+        return response()->json($doctors);
     }
 
    //Función que crea un nuevo doctor 
@@ -22,11 +22,10 @@ class DoctorsController extends Controller
         $doctor = new Doctor;
         $doctor->dui = $request->dui;
         $doctor->name = $request->name;
+        $doctor->idRoles = $request->idRoles;
         $doctor->specialty = $request->specialty;
-        $doctor->idRoll = $request->idRoll;
         $doctor->password = $request->password;
-        
-        
+        $doctor->save();
         return response()->json($doctor);
     }
 
@@ -45,8 +44,8 @@ class DoctorsController extends Controller
         $doctor = Doctor::findOrFail($id);
         $doctor->dui = $request->dui;
         $doctor->name = $request->name;
-        $doctor->specialty = $request->specialty;
         $doctor->idRoles = $request->idRoles;
+        $doctor->specialty = $request->specialty;
         $doctor->password = $request->password;
         $doctor->save();
         return response()->json($doctor);

@@ -24,7 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/areas', AreasController::class);// Rutas para las areas
-Route::apiResource('/doctor', DoctorsController::class);// Rutas para las Doctores
+Route::apiResource('/doctors', DoctorsController::class);// Rutas para las Doctores
 Route::apiResource('/patients', PatientsController::class);// Rutas para las Pacientes
-Route::apiResource('/receptionist', ReceptionistController::class);// Rutas para las Recepcionistas
+Route::apiResource('/receptionists', ReceptionistController::class);// Rutas para las Recepcionistas
 Route::apiResource('/roles', RolesController::class);// Rutas para las Roles

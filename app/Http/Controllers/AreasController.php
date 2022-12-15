@@ -7,24 +7,15 @@ use App\Models\Area;
 
 class AreasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index() //Funcion que mostrara una lista de areas.
+    //Funcion que mostrara una lista de areas.
+    public function index() 
     {
         $areas = Area::all();
         return response()->json($areas); 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request) //Funcion que creara un area nueva.
+   //Funcion que creara un area nueva
+    public function store(Request $request) 
     {
         $area = new Area;
         $area->name = $request->name;
@@ -33,26 +24,15 @@ class AreasController extends Controller
         return response()->json($area); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id) //Función que muestra un area en espefico basandose en su id
+    //Función que muestra un area en espefico basandose en su id
+    public function show($id) 
     {
         $area = Area::findOrFail($id);
         return response()->json($area);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)//Función que actualiza datos de un area basandose en su id
+   //Función que actualiza datos de un area basandose en su id
+    public function update(Request $request, $id)
     {
         $area = Area::findOrFail($id);
         $area->name = $request->name;
@@ -61,13 +41,8 @@ class AreasController extends Controller
         return response()->json($area);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)//Función que elimina un area basandose en su id
+    //Función que elimina un area basandose en su id
+    public function destroy($id)
     {
         $area = Area::findOrFail($id);
         $area->delete();
